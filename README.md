@@ -1,24 +1,11 @@
-# README
+# Requirements:
+- [ ] Write a module which can override all validates in class User
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```ruby
+class User < ApplicationRecord
+  validates :name, presence: true, length: { minimum: 1, maximum: 2 }
+end
 
-Things you may want to cover:
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Re-validate all attributes :name to presence: false, length: { minimum: 5, maximum: 10 }
