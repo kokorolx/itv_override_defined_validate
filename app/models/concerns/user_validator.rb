@@ -1,5 +1,5 @@
 module UserValidator
-  extend ActiveSupport::Concern # this line must be before
+  extend ActiveSupport::Concern # this line must be on TOP
   include ActiveModel::Validations
 
   included do
@@ -17,7 +17,7 @@ module UserValidator
 
       # remove validate by ::Proc
       # I think dont need to check `callback.filter.is_a?(Numeric)`
-      if callback.raw_filter.is_a?(Proc) && callback.filter.is_a?(Numeric) && callback.raw_filter.respond_to?(:attributes)
+      if callback.raw_filter.is_a?(Proc) && callback.filter.is_a?(Numeric)
         _validate_callbacks.delete(callback)
       end
     end
