@@ -3,7 +3,7 @@
 
 ```ruby
 class User < ApplicationRecord
-  validates :name, presence: true, length: { minimum: 1, maximum: 2 }
+  validates :name, presence: true, length: { minimum: 5, maximum: 10 }
   validates_numericality_of :age
 
   # validate by ::Proc
