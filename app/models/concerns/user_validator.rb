@@ -3,9 +3,16 @@ module UserValidator
   include ActiveModel::Validations
 
   included do
-    clear_validators! # remove all validators
+    p 'before remove'
+    p _validators
+    _validate_callbacks.each do |callback|
+      binding.pry
+      if callback.filter.is_a?(ActiveRecord::Validations::PresenceValidator) && callback.raw_filter.respond_to?(:attributes)
+        _validate_callbacks.delete(callback)
+      end
 
-    # declare new validators
-    validates :name, presence: false, length: { minimum: 5, maximum: 10 }
+    end
+    p 'after remove'
+    p _validators
   end
 end
