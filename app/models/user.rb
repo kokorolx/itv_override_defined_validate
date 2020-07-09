@@ -7,5 +7,9 @@ class User < ApplicationRecord
     errors.add(:name, 'Must be friends to leave a x') if true
   end
 
+  validate do
+    errors.add(:name, 'I want to remove this validate') if true
+  end
+
   include UserValidator # it will override the validation declared
 end
